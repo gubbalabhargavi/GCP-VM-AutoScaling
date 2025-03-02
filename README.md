@@ -21,7 +21,7 @@ This repository contains deployment scripts and configurations for setting up a 
 ### **2. Deploying the VM Instance**
 1. Clone this repository:
    ```sh
-   git clone 
+   git clone https://github.com/gubbalabhargavi/GCP-VM-AutoScaling
    cd GCP-VM-AutoScaling
    ```
 2. Run the VM setup script:
