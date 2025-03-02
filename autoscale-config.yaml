@@ -1,0 +1,6 @@
+autoscalingPolicy:
+  minNumReplicas: 1
+  maxNumReplicas: 5
+  coolDownPeriodSec: 90
+  cpuUtilization:
+    utilizationTarget: 0.6
