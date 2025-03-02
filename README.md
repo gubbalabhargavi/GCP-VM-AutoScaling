@@ -1,4 +1,5 @@
 # GCP-VM-AutoScaling
+
 # **GCP VM Auto-Scaling and Security Setup**
 
 ## **Overview**
@@ -9,6 +10,7 @@ This repository contains deployment scripts and configurations for setting up a 
 - `autoscale-config.yaml` - Configuration file for setting up auto-scaling policies.
 - `firewall-rules.sh` - Script to create and manage firewall rules.
 - `iam-roles.sh` - Script to assign IAM roles and permissions.
+- `autoscale-test.sh` - Script to stress test CPU and trigger auto-scaling.
 - `README.md` - This documentation file.
 
 ## **Setup Instructions**
@@ -48,13 +50,27 @@ This repository contains deployment scripts and configurations for setting up a 
    ./firewall-rules.sh
    ```
 
-## **Testing the Setup**
+### **5. Testing Auto-Scaling**
 - Verify VM creation under **Compute Engine > VM Instances**.
 - Check auto-scaling by simulating high CPU load:
   ```sh
-  yes > /dev/null &
+  chmod +x autoscale-test.sh
+  ./autoscale-test.sh
   ```
 - Validate security rules under **VPC Network > Firewall**.
+
+## **Auto-Scaling Test Script Explanation (`autoscale-test.sh`)**
+The `autoscale-test.sh` script is used to artificially increase CPU utilization to trigger auto-scaling. It continuously generates high CPU usage, causing new VM instances to be created.
+
+**Script:**
+```sh
+#!/bin/bash
+# Script to simulate high CPU load and trigger auto-scaling
+
+# Run a CPU-intensive process in the background
+stress --cpu 4 --timeout 300 &
+echo "High CPU load test initiated. Check instance scaling in Compute Engine."
+```
 
 ## **Contributing**
 Feel free to fork the repository and contribute improvements via pull requests.
@@ -64,3 +80,4 @@ This project is licensed under the MIT License.
 
 ## **Author**
 Gubbala Bhargavi
+
